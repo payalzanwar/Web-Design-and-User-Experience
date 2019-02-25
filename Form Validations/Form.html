@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Feedback</title>
+	<style>
+		label {	float: left;
+			width: 150px;}
+      #container{
+          width: 700px;
+          margin: auto;
+          background-color: beige;
+      } 
+      main{
+          padding: 50px;
+	  }
+	  .reg{
+		  color: red;
+		  font-size: 10pt;
+	  }
+	  #fval,#lval,#emailval,#pval,#zval,#sdemo,#sudemo,#wdemo,#hdemo,#HBdemo{
+		  color:red;
+		  font-size: 10pt;
+	  }
+	  select{
+		  width: 165px;
+	  }
+	  #Shoe,#Summer,#Winter,#Headphone,#Handbags,#select{
+		  display:none;
+		  margin-left:150px;
+		  margin-bottom: 15px;
+	  }
+	  
+  </style>
+	<script src="script.js"></script>
+<!-- <script src="jsscript.js"></script> -->
+</head>
+
+<body>
+	<div id="container">
+
+		<main>
+			<h2>Feeback</h2>
+			<h3>Love something? Hate something? Let us know!</h3>
+			Note : Fields marked with an asterisk(*) are mandatory
+			<br><br>
+			<!-- <form action="Display.html" method="post" novalidate name="myform" onsubmit="return  validateForm('title','firstName','lastName','emailId','phoneNumber','zipcode','source','text','shoe','summer','winter','head','HB')"> -->
+				<form method="post" novalidate name="myform" onsubmit="return  validateForm()">
+				<label>Title*:</label>
+				<input type="radio" name="title" id="miss" value="miss" required="required" />Miss
+				<input type="radio" name="title" id="mr" value="mr" required="required" />Mr.
+				<input type="radio" name="title" id="mrs" value="mrs" required="required" />Mrs.
+				<br><br>
+				<label for="firstName">First Name*:</label>
+				<input type="text" name="firstName" id="firstName" placeholder="First Name" onkeypress="validatefirstname()" />
+				<!-- <span class="reg">*Enter alphabets only</span><br> -->
+				<span id="fval"></span>
+
+				<br><br>
+
+
+				<label for="lastName">Last Name*:</label>
+			<input type="text" name="lastName" id="lastName" placeholder="Last Name" onkeydown ="validatelastname()" onkeyup ="validatelastname()" onkeypress ="validatelastname()" />
+			<!-- <span class="reg">*Enter alphabets only</span>  -->
+			<span id="lval"></span>
+			<br><br>
+			
+
+			<label for="emailId">Email Id*:</label>
+			<input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" onkeydown ="validateemail()" onkeyup ="validateemail()" onkeypress ="validateemail()" onkeydown ="validateemail()" />
+			<span id="emailval"></span>
+			<br><br>
+			
+
+			<label for="phoneNumber">Phone Number*:</label>
+			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" onkeydown ="validatephoneno()" onkeyup ="validatephoneno()" onkeypress ="validatephoneno()"/>
+			<span id="pval"></span>
+			<br><br>
+			
+            <label for="zipcode">ZipCode*:</label>
+			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" onkeydown ="validatezip()" onkeyup ="validatezip()" onkeypress ="validatezip()"/>
+			<span id="zval"></span>
+			<br><br>
+				<label for="list">Can't Live without?*:</label>
+				<select id="Pref" name="Pref" onchange="validateselect()">
+					<option value="select">Select</option>
+					<option value="Shoe">Shoe Dazzle</option>
+					<option value="Summer">Summer Clothes</option>
+					<option value="Winter">Winter Clothes</option>
+					<option value="Headphones">Headphones</option>
+					<option value="Handbags">Handbags</option>
+				</select>
+				<br><br>
+				<!-- <label for="Ginger">Availability:</label> -->
+				<span id="select"></span>
+				<span id="Shoe">
+					<input type='checkbox' name="shoe" value="Stiletto" onclick="showstring('shoe')"/> Stiletto
+					<input type='checkbox' name="shoe" value="Flats"  onclick="showstring('shoe')"/> Flats
+					<input type='checkbox' name="shoe" value="Wedges"  onclick="showstring('shoe')"/> Wedges
+					<p id="sdemo"></p>
+				</span>
+				<span id="Summer">
+					<input type='checkbox' name="summer" value="Jumpsuits" onclick="showstring('summer')"/> Jumpsuits
+					<input type='checkbox' name="summer" value="Skirts" onclick="showstring('summer')"/> Skirts
+					<p id="sudemo"></p>
+				</span>
+
+				<span id="Winter">
+					<input type='checkbox' name="winter" value="Coats" onclick="showstring('winter')" /> Coats
+					<input type='checkbox' name="winter" value="Sweaters" onclick="showstring('winter')" /> Sweaters
+					<input type='checkbox' name="winter" value="Shrugs" onclick="showstring('winter')"/> Shrugs
+					<p id="wdemo"></p>
+				</span>
+				<span id="Headphone">
+					<input type='checkbox' name="head" value="JBL" onclick="showstring('head')"/> JBL
+					<input type='checkbox' name="head" value="BoAt" onclick="showstring('head')"/> BoAt
+					<p id="hdemo"></p>
+				</span>
+				<span id="Handbags">
+					<input type='checkbox' name="HB" value="Sling" onclick="showstring('HB')"/> Sling
+					<input type='checkbox' name="HB" value="Clutches" onclick="showstring('HB')"/>Clutches
+					<input type='checkbox' name="HB" value="Backpacks" onclick="showstring('HB')"/> Backpacks
+					<p id="HBdemo"></p>
+				</span>
+				
+				<label for="zipcode">How did you hear*:</label>
+				<input type='checkbox' name="source" value="facebook" /> Facebook
+				<input type='checkbox' name="source" value="google" /> Google
+				<input type='checkbox' name="source" value="yelp" /> Yelp
+				<br><br>
+
+				<label for="comments">Comments*:</label>
+				<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25"></textarea>
+				<br><br>
+				<input type="Submit">
+				<input type="Reset">
+				<br><br>
+			</form>
+		</main>
+	</div>
+
+	<script>
+
+	</script>
+
+</body>
+
+</html>
